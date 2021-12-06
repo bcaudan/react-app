@@ -4,6 +4,22 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { datadogRum } from '@datadog/browser-rum';
+
+datadogRum.init({
+    applicationId: 'xxx',
+    clientToken: 'xxx',
+    site: 'datadoghq.com',
+    service:'dd_rum',
+    // Specify a version number to identify the deployed version of your application in Datadog
+    // version: '1.0.0',
+    sampleRate: 100,
+    trackInteractions: true,
+    defaultPrivacyLevel: 'mask-user-input'
+});
+
+datadogRum.startSessionReplayRecording();
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
